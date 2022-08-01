@@ -2,7 +2,6 @@ script_name('Helper Kit')
 script_version('1')
 script_author('Evan West')
 
-local http = require('socket.http')
 local events = require('samp.events')
 
 local dictPath = 'moonloader\\config\\helper-kit\\dict.json'
@@ -35,6 +34,17 @@ function getMatch(a, kw)
     return bm
 end
 
+function clearMarker()
+    if blip ~= nil then
+        removeBlip(blip)
+        blip = nil
+    end
+    if checkpoint ~= nil then
+        deleteCheckpoint(checkpoint)
+        checkpoint = nil
+    end
+end
+
 function cmdDef(kw)
     local bm = getMatch(dict, kw)
     if bm == nil then return end
@@ -62,6 +72,7 @@ end
 function cmdLoc(kw)
     local bm = getMatch(locations, kw)
     if bm == nil then return end
+    clearMarker()
     blip = addBlipForCoord(bm.X, bm.Y, bm.Z)
     setCoordBlipAppearance(blip, 2)
     checkpoint = createCheckpoint(2, bm.X, bm.Y, bm.Z, bm.X, bm.Y, bm.Z, 15)
@@ -69,10 +80,7 @@ function cmdLoc(kw)
         while checkpoint ~= nil or blip ~= nil do
             local cx, cy, cz = getCharCoordinates(PLAYER_PED)
             if getDistanceBetweenCoords3d(cx, cy, cz, bm.X, bm.Y, bm.Z) <= 15 then
-                removeBlip(blip)
-                blip = nil
-                deleteCheckpoint(checkpoint)
-                checkpoint = nil
+                clearMarker()
                 addOneOffSound(cx, cy, cz, 1058)
                 break
             end
@@ -100,14 +108,7 @@ end
 function events.onSendCommand(command)
     local cl = command:lower()
     if cl:sub(1, 4) == '/kcp' or cl:sub(1, 15) == '/killcheckpoint' then
-        if checkpoint ~= nil then
-            deleteCheckpoint(checkpoint)
-            checkpoint = nil
-        end
-        if blip ~= nil then
-            removeBlip(blip)
-            blip = nil
-        end
+        clearMarker()
     end
 end
 
