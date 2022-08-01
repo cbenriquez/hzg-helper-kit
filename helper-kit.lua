@@ -1,17 +1,24 @@
-script_name('Helper Dictionary')
+script_name('Helper Kit')
+script_version('1')
 script_author('Evan West')
 
 local http = require('socket.http')
+local events = require('samp.events')
 
-local dictVersionPath = 'moonloader\\config\\helper-dict\\dict-version'
-local dictPath = 'moonloader\\config\\helper-dict\\dict.json'
+local dictPath = 'moonloader\\config\\helper-kit\\dict.json'
+local dict = {}
 
-local hd = {}
+local locationsPath = 'moonloader\\config\\helper-kit\\locations.json'
+local locations = {}
 
-function cmdDef(kw)
+local debug = false
+
+local checkpoint, blip
+
+function getMatch(a, kw)
     kw = kw:lower():gsub(' ', ''):gsub('-', '')
     local bm, bmd
-    for _, e in ipairs(hd) do
+    for _, e in ipairs(a) do
         if e.keywords and type(e.keywords) == 'table' then
             for _, ekw in ipairs(e.keywords) do
                 local ekws = ekw:lower():gsub(' ', ''):gsub('-', '')
@@ -25,8 +32,12 @@ function cmdDef(kw)
             end
         end
     end
+    return bm
+end
+
+function cmdDef(kw)
+    local bm = getMatch(dict, kw)
     if bm == nil then return end
-    kw, bmd = nil, nil
     local msgt = {bm.keywords[1]}
     for n, v in pairs(bm) do
         if n == 'keywords' then goto continue end
@@ -48,32 +59,76 @@ function cmdDef(kw)
     sampAddChatMessage(msg, -1)
 end
 
+function cmdLoc(kw)
+    local bm = getMatch(locations, kw)
+    if bm == nil then return end
+    blip = addBlipForCoord(bm.X, bm.Y, bm.Z)
+    setCoordBlipAppearance(blip, 2)
+    checkpoint = createCheckpoint(2, bm.X, bm.Y, bm.Z, bm.X, bm.Y, bm.Z, 15)
+    lua_thread.create(function()
+        while checkpoint ~= nil or blip ~= nil do
+            local cx, cy, cz = getCharCoordinates(PLAYER_PED)
+            if getDistanceBetweenCoords3d(cx, cy, cz, bm.X, bm.Y, bm.Z) <= 15 then
+                removeBlip(blip)
+                blip = nil
+                deleteCheckpoint(checkpoint)
+                checkpoint = nil
+                addOneOffSound(cx, cy, cz, 1058)
+                break
+            end
+            wait(100)
+        end
+    end)
+    sampAddChatMessage(string.format('A marker has been placed on %s.', bm.keywords[1]), -1)
+end
+
+function cmdSloc(name)
+    local cx, cy, cz = getCharCoordinates(PLAYER_PED)
+    table.insert(locations, {
+        keywords = {name},
+        X = cx,
+        Y = cy,
+        Z = cz
+    })
+    local f = io.open(locationsPath, 'w+')
+    if f == nil then return end
+    f:write(encodeJson(locations))
+    f:close()
+    sampAddChatMessage('Location saved.', -1)
+end
+
+function events.onSendCommand(command)
+    local cl = command:lower()
+    if cl:sub(1, 4) == '/kcp' or cl:sub(1, 15) == '/killcheckpoint' then
+        if checkpoint ~= nil then
+            deleteCheckpoint(checkpoint)
+            checkpoint = nil
+        end
+        if blip ~= nil then
+            removeBlip(blip)
+            blip = nil
+        end
+    end
+end
+
 function main()
     while not isSampAvailable() do wait(100) end
-    local localDictVersionFile = io.open(dictVersionPath, 'r+b')
-    if localDictVersionFile == nil then goto skipupdate end
-    local localDictVersion = tonumber(localDictVersionFile:read('*a'))
-    local remoteDictVersion = http.request('https://raw.githubusercontent.com/cbenriquez/hzg-helper-kit/master/config/helper-kit/dict-version')
-    remoteDictVersion = tonumber(remoteDictVersion)
-    if remoteDictVersion == nil then goto skipupdate end
-    if localDictVersion >= remoteDictVersion then goto skipupdate end
-    localDictVersion = nil
-    local remoteDict = http.request('https://raw.githubusercontent.com/cbenriquez/hzg-helper-kit/master/config/helper-kit/dict.json')
-    if remoteDict == nil then goto skipupdate end
-    local localDictFile = io.open(dictPath, 'wb')
-    localDictFile:write(remoteDict)
-    localDictFile:close()
-    remoteDict, localDictFile = nil, nil
-    localDictVersionFile:write(encodeJson(vcj))
-    localDictVersionFile:close()
-    localDictVersionFile = nil
-    ::skipupdate::
-    local file = io.open(dictPath, 'rb')
-    if file ~= nil then
-        hd = decodeJson(file:read('*a'))
-        file:close()
-        file = nil
+    local f = io.open(dictPath, 'rb')
+    if f ~= nil then
+        dict = decodeJson(f:read('*a'))
+        f:close()
+        f = nil
+    end
+    f = io.open(locationsPath, 'rb')
+    if f ~= nil then
+        locations = decodeJson(f:read('*a'))
+        f:close()
+        f = nil
     end
     sampRegisterChatCommand('def', cmdDef)
+    sampRegisterChatCommand('loc', cmdLoc)
+    if debug then
+        sampRegisterChatCommand('sloc', cmdSloc)
+    end
     while true do wait(100) end
 end

@@ -1404,5 +1404,12 @@
 		"built-up areas": "85 MPH",
 		"highway": "120 MPH",
 		"interstate": "150 MPH"
+	},
+	{
+		"keywords": ["City Hall", "License", "Driver's License", "Boating License", "Pilot License"],
+		"driver's license": "$500",
+		"boating license": "$500",
+		"pilot license": "$2,500",
+		"usage": "/getlicense"
 	}
 ]
