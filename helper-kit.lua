@@ -11,7 +11,6 @@ local locationsPath = 'moonloader\\config\\helper-kit\\locations.json'
 local locations = {}
 
 local debug = false
-
 local checkpoint, blip
 
 function getMatch(a, kw)

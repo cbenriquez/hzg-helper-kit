@@ -330,63 +330,72 @@
 	},
 	{
         "keywords": ["Buffalo"],
-		"sapphire dealership": "$95,000",
+		"from importers": "$250,000",
+		"from sapphire": "$95,000",
 		"from players": "$60,000",
 		"seats": "2",
 		"speed": "159 MPH"
 	},
 	{
         "keywords": ["Cheetah"],
-		"sapphire dealership": "$95,000",
+		"from importers": "$250,000",
+		"from sapphire": "$95,000",
 		"from players": "$60,000",
 		"seats": "2",
 		"speed": "155 MPH"
 	},
 	{
         "keywords": ["Elegy"],
-		"sapphire dealership": "$95,000",
+		"from importers": "$250,000",
+		"from sapphire": "$95,000",
 		"from players": "$60,000",
 		"seats": "2",
 		"speed": "147 MPH"
 	},
 	{
         "keywords": ["Uranus"],
-		"sapphire dealership": "$95,000",
+		"from importers": "$250,000",
+		"from sapphire": "$95,000",
 		"from players": "$60,000",
 		"seats": "2",
 		"speed": "129 MPH"
 	},
 	{
         "keywords": ["Jester"],
-		"sapphire dealership": "$95,000",
+		"from importers": "$250,000",
+		"from sapphire": "$95,000",
 		"from players": "$60,000",
 		"seats": "2",
 		"speed": "147 MPH"
 	},
 	{
         "keywords": ["Banshee"],
-		"diamond dealership": "$125,000",
+		"from importers": "$250,000",
+		"from diamond": "$125,000",
 		"from players": "$60,000",
 		"seats": "2",
 		"speed": "167 MPH"
 	},
 	{
         "keywords": ["Turismo"],
-		"dealership": "Diamnond - $125,000",
+		"from importers": "$250,000",
+		"from diamond": "$125,000",
 		"from players": "$60,000",
 		"seats": "2",
 		"speed": "160 MPH"
 	},
 	{
         "keywords": ["Bullet"],
-		"diamond dealership": "$125,000",
+		"from importers": "$250,000",
+		"from diamond": "$125,000",
 		"from players": "$60,000",
 		"seats": "2",
 		"speed": "168 MPH"
 	},
 	{
         "keywords": ["Infernus"],
-		"diamond dealership": "$500,000",
+		"from importers": "$250,000",
+		"from diamond": "$500,000",
 		"from players": "$60,000",
 		"seats": "2",
 		"speed": "184 MPH"
@@ -1128,7 +1137,7 @@
     {
 		"keywords": ["Dice"],
         "from 24/7": "$50",
-        "usage": "/dicebet or /dice"
+        "usage": "/dicebet as lvl 5+ or /dice"
     },
     {
 		"keywords": ["Condom"],
@@ -1411,5 +1420,22 @@
 		"boating license": "$500",
 		"pilot license": "$2,500",
 		"usage": "/getlicense"
+	},
+	{
+		"keywords": ["Class A Business"],
+		"from players": "$1,000,000 to $2,000,000",
+		"from donating": "$49.50 USD",
+		"examples": "24/7, gas station with 24/7, gun store, clothes store, or advertisement store"
+	},
+	{
+		"keywords": ["Class B Business"],
+		"from players": "$800,000 to $1,500,000",
+		"from donating": "$35 USD",
+		"examples": "Nightclub, Burger Shot, Cluckin' Bell, Pizza Stack, sex store, restaurant, or gym"
+	},
+	{
+		"keywords": ["House"],
+		"from players": "$500,000 - $1,500,000",
+		"from donating": "$28.50 USD"
 	}
 ]
