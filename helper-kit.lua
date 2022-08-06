@@ -10,7 +10,6 @@ local dict = {}
 local locationsPath = 'moonloader\\config\\helper-kit\\locations.json'
 local locations = {}
 
-local debug = false
 local checkpoint, blip
 
 function getMatch(a, kw)
@@ -89,21 +88,6 @@ function cmdLoc(kw)
     sampAddChatMessage(string.format('A marker has been placed on %s.', bm.keywords[1]), -1)
 end
 
-function cmdSloc(name)
-    local cx, cy, cz = getCharCoordinates(PLAYER_PED)
-    table.insert(locations, {
-        keywords = {name},
-        X = cx,
-        Y = cy,
-        Z = cz
-    })
-    local f = io.open(locationsPath, 'w+')
-    if f == nil then return end
-    f:write(encodeJson(locations))
-    f:close()
-    sampAddChatMessage('Location saved.', -1)
-end
-
 function events.onSendCommand(command)
     local cl = command:lower()
     if cl:sub(1, 4) == '/kcp' or cl:sub(1, 15) == '/killcheckpoint' then
@@ -127,8 +111,5 @@ function main()
     end
     sampRegisterChatCommand('def', cmdDef)
     sampRegisterChatCommand('loc', cmdLoc)
-    if debug then
-        sampRegisterChatCommand('sloc', cmdSloc)
-    end
     while true do wait(100) end
 end

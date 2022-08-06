@@ -1437,5 +1437,15 @@
 		"keywords": ["House"],
 		"from players": "$500,000 - $1,500,000",
 		"from donating": "$28.50 USD"
+	},
+	{
+		"keywords": ["Namechange", "NC"],
+		"at": "City Hall",
+		"from /changename": "$3,000 per level"
+	},
+	{
+		"keywords": ["Banks"],
+		"Locations": "Bank of Los Santos, Rodeo Bank, Bank of San Fierro, and Bank of Palomino Creek",
+		"Usage": "/bankhelp"
 	}
 ]
