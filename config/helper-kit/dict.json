@@ -121,7 +121,7 @@
 	{
         "keywords": ["BMX"],
 		"from willowfield bikes": "$500",
-		"from players": "$180,000",
+		"from players": "$1,000",
 		"seats": "1",
 		"speed": "80 MPH"
 	},
@@ -1445,7 +1445,7 @@
 	},
 	{
 		"keywords": ["Banks"],
-		"Locations": "Bank of Los Santos, Rodeo Bank, Bank of San Fierro, and Bank of Palomino Creek",
-		"Usage": "/bankhelp"
+		"locations": "Bank of Los Santos, Rodeo Bank, Bank of San Fierro, and Bank of Palomino Creek",
+		"usage": "/bankhelp"
 	}
 ]
