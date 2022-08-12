@@ -88,11 +88,12 @@ function cmdLoc(kw)
     sampAddChatMessage(string.format('A marker has been placed on %s.', bm.keywords[1]), -1)
 end
 
-function events.onSendCommand(command)
-    local cl = command:lower()
-    if cl:sub(1, 4) == '/kcp' or cl:sub(1, 15) == '/killcheckpoint' then
-        clearMarker()
-    end
+function cmdLvl(level)
+    level = tonumber(level)
+    if level == nil or level < 2 then return end
+    local rp = 8 + (level - 2) * 4
+    local mon = 5000 + (level - 2) * 2500
+    sampAddChatMessage(string.format("Level %d = %d respect points + $%d", level, rp, mon), -1)
 end
 
 function main()
@@ -111,5 +112,13 @@ function main()
     end
     sampRegisterChatCommand('def', cmdDef)
     sampRegisterChatCommand('loc', cmdLoc)
+    sampRegisterChatCommand('lvl', cmdLvl)
     while true do wait(100) end
+end
+
+function events.onSendCommand(command)
+    local cl = command:lower()
+    if cl:sub(1, 4) == '/kcp' or cl:sub(1, 15) == '/killcheckpoint' then
+        clearMarker()
+    end
 end
