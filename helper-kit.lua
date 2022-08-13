@@ -44,8 +44,15 @@ function clearMarker()
 end
 
 function cmdDef(kw)
+    if #kw == 0 then
+        sampAddChatMessage('USAGE: (/def)ine [query]', -1)
+        return
+    end
     local bm = getMatch(dict, kw)
-    if bm == nil then return end
+    if bm == nil then
+        sampAddChatMessage('No match found.', -1)
+        return
+    end
     local msgt = {bm.keywords[1]}
     for n, v in pairs(bm) do
         if n == 'keywords' then goto continue end
@@ -68,8 +75,15 @@ function cmdDef(kw)
 end
 
 function cmdLoc(kw)
+    if #kw == 0 then
+        sampAddChatMessage('USAGE: (/loc)ate [query]', -1)
+        return
+    end
     local bm = getMatch(locations, kw)
-    if bm == nil then return end
+    if bm == nil then
+        sampAddChatMessage('No match found.', -1)
+        return
+    end
     clearMarker()
     blip = addBlipForCoord(bm.X, bm.Y, bm.Z)
     setCoordBlipAppearance(blip, 2)
@@ -90,10 +104,25 @@ end
 
 function cmdLvl(level)
     level = tonumber(level)
-    if level == nil or level < 2 then return end
+    if level == nil or level < 2 then
+        sampAddChatMessage('USAGE: /lvl [>=2]', -1)
+        return
+    end
     local rp = 8 + (level - 2) * 4
     local mon = 5000 + (level - 2) * 2500
     sampAddChatMessage(string.format("Level %d = %d respect points + $%d", level, rp, mon), -1)
+end
+
+function cmdN(msg)
+    if #msg == 0 then
+        sampAddChatMessage('USAGE: (/n)ewbie [text]', -1)
+        return
+    end
+    local prefix = '** Junior Helper ' .. sampGetPlayerNickname(sampGetPlayerIdByCharHandle(PLAYER_PED)):gsub('_', ' ') .. ': '
+    sampSendChat('/newb ' .. msg:sub(1, 126 - #prefix), -1)
+    if #prefix + #msg > 127 then
+        sampSendChat('/g -..' .. msg:sub(127 - #prefix, #msg), -1)
+    end
 end
 
 function main()
@@ -113,6 +142,7 @@ function main()
     sampRegisterChatCommand('def', cmdDef)
     sampRegisterChatCommand('loc', cmdLoc)
     sampRegisterChatCommand('lvl', cmdLvl)
+    sampRegisterChatCommand('n', cmdN)
     while true do wait(100) end
 end
 
