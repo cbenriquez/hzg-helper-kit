@@ -118,7 +118,8 @@ function cmdN(msg)
         sampAddChatMessage('USAGE: (/n)ewbie [text]', -1)
         return
     end
-    local prefix = '** Junior Helper ' .. sampGetPlayerNickname(sampGetPlayerIdByCharHandle(PLAYER_PED)):gsub('_', ' ') .. ': '
+    local _, id = sampGetPlayerIdByCharHandle(PLAYER_PED)
+    local prefix = '** ###### Helper ' .. sampGetPlayerNickname(id):gsub('_', ' ') .. ': '
     sampSendChat('/newb ' .. msg:sub(1, 126 - #prefix), -1)
     if #prefix + #msg > 127 then
         sampSendChat('/g -..' .. msg:sub(127 - #prefix, #msg), -1)
