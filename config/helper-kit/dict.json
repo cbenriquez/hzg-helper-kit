@@ -1378,19 +1378,52 @@
 		"moves": "Boxing, Elbow, Kneehead (best), Kung-Fu, Grabkick, and Normal"
 	},
 	{
+		"keywords": ["Non-donator", "ND"],
+		"concurrent vehicles spawned": "1",
+		"personal vehicles limit": "8",
+		"toys limit": "4",
+		"interest rate": "0.1",
+		"max interest": "$1,000",
+		"spawn armor limit": "50"
+	},
+	{
 		"keywords": ["Diamond Donator", "DD"],
-		"from players": "$1,000,000",
-		"from donating": "$19.50 USD"
+		"from importers": "$1,000,000",
+		"from donating": "$19.50 USD",
+		"concurrent vehicles spawned": "4",
+		"personal vehicles limit": "20",
+		"toys limit": "8",
+		"interest rate": "0.5",
+		"max interest": "$3,000",
+		"spawn armor limit": "100",
+		"paychecks for /takepills": "2",
+		"IC prison time reduction": "40 percent"
 	},
 	{
 		"keywords": ["Sapphire Donator", "SD"],
-		"from players": "$500,000",
-		"from donating": "$10 USD"
+		"from importers": "$500,000",
+		"from donating": "$10 USD",
+		"concurrent vehicles spawned": "3",
+		"personal vehicles limit": "15",
+		"toys limit": "7",
+		"interest rate": "0.3",
+		"max interest": "$2,000",
+		"spawn armor limit": "80",
+		"paychecks for /takepills": "4",
+		"IC prison time reduction": "20 percent"
 	},
 	{
 		"keywords": ["Ruby Donator", "RD"],
-		"from players": "$250,000",
-		"from donating": "$5 USD"
+		"from importers": "$250,000",
+		"from donating": "$5 USD",
+		"concurrent vehicles spawned": "2",
+		"personal vehicles limit": "10",
+		"toys limit": "6",
+		"interest rate": "0.2",
+		"max interest": "$1,500",
+		"spawn armor limit": "60",
+		"paychecks for /takepills": "6",
+		"IC prison time reduction": "10 percent"
 	},
 	{
 		"keywords": ["Dynamic Door"],
@@ -1447,5 +1480,13 @@
 		"keywords": ["Banks"],
 		"locations": "Bank of Los Santos, Rodeo Bank, Bank of San Fierro, and Bank of Palomino Creek",
 		"usage": "/bankhelp"
+	},
+	{
+		"keywords": ["In character", "IC"],
+		"definition": "The beliefs and actions of the character that one is roleplaying as."
+	},
+	{
+		"keywords": ["Out of character", "OOC"],
+		"definition": "The beliefs and actions of the player."
 	}
 ]

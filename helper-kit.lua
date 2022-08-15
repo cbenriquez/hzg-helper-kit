@@ -32,7 +32,7 @@ function getMatch(a, kw)
     return bm
 end
 
-function clearMarker()
+function clearCheckpoint()
     if blip ~= nil then
         removeBlip(blip)
         blip = nil
@@ -84,7 +84,7 @@ function cmdLoc(kw)
         sampAddChatMessage('No match found.', -1)
         return
     end
-    clearMarker()
+    clearCheckpoint()
     blip = addBlipForCoord(bm.X, bm.Y, bm.Z)
     setCoordBlipAppearance(blip, 2)
     checkpoint = createCheckpoint(2, bm.X, bm.Y, bm.Z, bm.X, bm.Y, bm.Z, 15)
@@ -92,14 +92,14 @@ function cmdLoc(kw)
         while checkpoint ~= nil or blip ~= nil do
             local cx, cy, cz = getCharCoordinates(PLAYER_PED)
             if getDistanceBetweenCoords3d(cx, cy, cz, bm.X, bm.Y, bm.Z) <= 15 then
-                clearMarker()
+                clearCheckpoint()
                 addOneOffSound(cx, cy, cz, 1058)
                 break
             end
             wait(100)
         end
     end)
-    sampAddChatMessage(string.format('A marker has been placed on %s.', bm.keywords[1]), -1)
+    sampAddChatMessage(string.format('Follow the checkpoint to %s.', bm.keywords[1]), -1)
 end
 
 function cmdLvl(level)
@@ -150,6 +150,6 @@ end
 function events.onSendCommand(command)
     local cl = command:lower()
     if cl:sub(1, 4) == '/kcp' or cl:sub(1, 15) == '/killcheckpoint' then
-        clearMarker()
+        clearCheckpoint()
     end
 end
