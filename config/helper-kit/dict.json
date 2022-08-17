@@ -1433,12 +1433,12 @@
 	{
 		"keywords": ["Crack"],
 		"from players": "$70 each",
-		"from cracklab": "$50 each"
+		"from crack lab": "$50 each"
 	},
 	{
 		"keywords": ["Pot", "Marijuana", "Cannabis"],
 		"from players": "$30 each",
-		"from drughouse": "$10 each"
+		"from drug house": "$10 each"
 	},
 	{
 		"keywords": ["Speed Limit"],
@@ -1483,10 +1483,29 @@
 	},
 	{
 		"keywords": ["In character", "IC"],
-		"definition": "The beliefs and actions of the character that one is roleplaying as."
+		"definition": "The beliefs and actions of the player's character."
 	},
 	{
 		"keywords": ["Out of character", "OOC"],
 		"definition": "The beliefs and actions of the player."
+	},
+	{
+		"keywords": ["MP3 Player"],
+		"usage": "/mp3",
+		"from importers": "$250,000",
+		"from donating": "$4.50"
+	},
+	{
+		"keywords": ["Boombox"],
+		"usage": "/placebb as DD or boombox owner",
+		"from importers": "$250,000",
+		"from donating": "$4.50"
+	},
+	{
+		"keywords": ["Matrun"],
+		"with MP1 - MF1": "$75 package cost, 250 mats per run, ETA 120 seconds, and 7.5k mats per hour",
+		"with MP2 - MF2": "$75 package cost, 250 mats per run, ETA 62 seconds, and 14.5k mats per hour",
+		"with shamal": "$135 package cost, 450 mats per run, ETA 95 seconds, and 16.65k mats per hour",
+		"with boat": "$150 package cost, 500 mats per run, ETA 214 seconds, and 8k mats per hour"
 	}
 ]

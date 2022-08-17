@@ -113,17 +113,48 @@ function cmdLvl(level)
     sampAddChatMessage(string.format("Level %d = %d respect points + $%d", level, rp, mon), -1)
 end
 
+function extendNewbie(chat, msg)
+    local _, id = sampGetPlayerIdByCharHandle(PLAYER_PED)
+    local prefix = '** ###### Helper ' .. sampGetPlayerNickname(id) .. ': '
+    sampSendChat('/newb ' .. msg:sub(1, 126 - #prefix), -1)
+    if #prefix + #msg > 127 then
+        sampSendChat(chat .. ' -..' .. msg:sub(127 - #prefix, #msg), -1)
+    end
+end
+
 function cmdN(msg)
     if #msg == 0 then
         sampAddChatMessage('USAGE: (/n)ewbie [text]', -1)
         return
     end
-    local _, id = sampGetPlayerIdByCharHandle(PLAYER_PED)
-    local prefix = '** ###### Helper ' .. sampGetPlayerNickname(id):gsub('_', ' ') .. ': '
-    sampSendChat('/newb ' .. msg:sub(1, 126 - #prefix), -1)
-    if #prefix + #msg > 127 then
-        sampSendChat('/g -..' .. msg:sub(127 - #prefix, #msg), -1)
+    extendNewbie('/g', msg)
+end
+
+function cmdEn(msg)
+    if #msg == 0 then
+        sampAddChatMessage('USAGE: (/e)xtendon(n)ewbie [text]', -1)
+        return
     end
+    extendNewbie('/newb', msg)
+end
+
+function cmdHrs()
+    sampSendChat('/helprequests')
+end
+
+function cmdAhr(params)
+    if #params == 0 then
+        sampAddChatMessage('USAGE: (/a)ccept(h)elp(r)equest [playerid]', -1)
+        return
+    end
+    sampSendChat('/accepthelp ' .. params)
+end
+
+function cmdHkhelp()
+    sampAddChatMessage('_______________________________________', 0x33CCFF)
+    sampAddChatMessage('*** HELPER KIT HELP *** - type a command for more infomation.', -1)
+    sampAddChatMessage('*** HELPER KIT ALL *** /def /loc /lvl /n /hrs /hkhelp', 0xCBCCCE)
+    sampAddChatMessage('*** HELPER KIT SENIORS *** /en /ahr', 0xCBCCCE)
 end
 
 function main()
@@ -144,6 +175,10 @@ function main()
     sampRegisterChatCommand('loc', cmdLoc)
     sampRegisterChatCommand('lvl', cmdLvl)
     sampRegisterChatCommand('n', cmdN)
+    sampRegisterChatCommand('hrs', cmdHrs)
+    sampRegisterChatCommand('ahr', cmdAhr)
+    sampRegisterChatCommand('hkhelp', cmdHkhelp)
+    sampRegisterChatCommand('en', cmdEn)
     while true do wait(100) end
 end
 
