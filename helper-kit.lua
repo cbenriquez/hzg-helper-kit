@@ -32,6 +32,10 @@ function getMatch(a, kw)
     return bm
 end
 
+function numWithCommas(n)
+    return tostring(math.floor(n)):reverse():gsub("(%d%d%d)","%1,"):gsub(",(%-?)$","%1"):reverse()
+end
+
 function clearCheckpoint()
     if blip ~= nil then
         removeBlip(blip)
@@ -45,7 +49,7 @@ end
 
 function cmdDef(kw)
     if #kw == 0 then
-        sampAddChatMessage('USAGE: (/def)ine [query]', -1)
+        sampAddChatMessage('USAGE: (/def)ine [query]', 0xAFAFAF)
         return
     end
     local bm = getMatch(dict, kw)
@@ -76,7 +80,7 @@ end
 
 function cmdLoc(kw)
     if #kw == 0 then
-        sampAddChatMessage('USAGE: (/loc)ate [query]', -1)
+        sampAddChatMessage('USAGE: (/loc)ate [query]', 0xAFAFAF)
         return
     end
     local bm = getMatch(locations, kw)
@@ -105,12 +109,20 @@ end
 function cmdLvl(level)
     level = tonumber(level)
     if level == nil or level < 2 then
-        sampAddChatMessage('USAGE: /lvl [>=2]', -1)
+        sampAddChatMessage('USAGE: /lvl [n>=2]', 0xAFAFAF)
         return
     end
     local rp = 8 + (level - 2) * 4
     local mon = 5000 + (level - 2) * 2500
-    sampAddChatMessage(string.format("Level %d = %d respect points + $%d", level, rp, mon), -1)
+    local rpsum = (level - 1) * (8 + rp) / 2
+    local monsum = (level - 1) * (5000 + mon) / 2
+    sampAddChatMessage(string.format("{33CCFF}Level %s:{FFFFFF} %s respect points + $%s | {33CCFF}Total:{FFFFFF} %s respect points + $%s",
+        numWithCommas(level),
+        numWithCommas(rp),
+        numWithCommas(mon),
+        numWithCommas(rpsum),
+        numWithCommas(monsum)
+    ), -1)
 end
 
 function extendNewbie(chat, msg)
@@ -124,7 +136,7 @@ end
 
 function cmdN(msg)
     if #msg == 0 then
-        sampAddChatMessage('USAGE: (/n)ewbie [text]', -1)
+        sampAddChatMessage('USAGE: (/n)ewbie [text]', 0xAFAFAF)
         return
     end
     extendNewbie('/g', msg)
@@ -132,7 +144,7 @@ end
 
 function cmdEn(msg)
     if #msg == 0 then
-        sampAddChatMessage('USAGE: (/e)xtendon(n)ewbie [text]', -1)
+        sampAddChatMessage('USAGE: (/e)xtendon(n)ewbie [text]', 0xAFAFAF)
         return
     end
     extendNewbie('/newb', msg)
@@ -144,16 +156,49 @@ end
 
 function cmdAhr(params)
     if #params == 0 then
-        sampAddChatMessage('USAGE: (/a)ccept(h)elp(r)equest [playerid]', -1)
+        sampAddChatMessage('USAGE: (/a)ccept(h)elp(r)equest [playerid]', 0xAFAFAF)
         return
     end
     sampSendChat('/accepthelp ' .. params)
 end
 
+function cmdLvl1s()
+    local lvl1s = {}
+    for id=0, sampGetMaxPlayerId(false), 1 do
+        if sampIsPlayerConnected(id) then
+            if sampGetPlayerScore(id) == 1 then
+                if string.find(sampGetPlayerNickname(id), '_') then
+                    table.insert(lvl1s, id)
+                end
+            end
+        end
+    end
+    if #lvl1s == 0 then
+        sampAddChatMessage('No level 1 player is online, but this may be a mistake. Try pressing TAB and waiting a few moments.', -1)
+        return
+    end
+    sampAddChatMessage('Level 1 Players Online:', 0xFFA500)
+    local final = {}
+    local team = {}
+    local r = 1
+    for i, id in pairs(lvl1s) do
+        if r == 4 then
+            r = 1
+            table.insert(final, team)
+            team = {}
+        end
+        table.insert(team, string.format('{33CCFF}(%i){FFFFFF} %s', id, string.gsub(sampGetPlayerNickname(id), '_', ' ')))
+        r = r + 1
+    end
+    for i, team in pairs(final) do
+        sampAddChatMessage(table.concat(team, " | "), -1)
+    end
+end
+
 function cmdHkhelp()
     sampAddChatMessage('_______________________________________', 0x33CCFF)
     sampAddChatMessage('*** HELPER KIT HELP *** - type a command for more infomation.', -1)
-    sampAddChatMessage('*** HELPER KIT ALL *** /def /loc /lvl /n /hrs /hkhelp', 0xCBCCCE)
+    sampAddChatMessage('*** HELPER KIT ALL *** /def /loc /lvl /n /hrs /lvl1s', 0xCBCCCE)
     sampAddChatMessage('*** HELPER KIT SENIORS *** /en /ahr', 0xCBCCCE)
 end
 
@@ -179,6 +224,7 @@ function main()
     sampRegisterChatCommand('ahr', cmdAhr)
     sampRegisterChatCommand('hkhelp', cmdHkhelp)
     sampRegisterChatCommand('en', cmdEn)
+    sampRegisterChatCommand('lvl1s', cmdLvl1s)
     while true do wait(100) end
 end
 
