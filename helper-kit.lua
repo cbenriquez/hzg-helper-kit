@@ -194,7 +194,7 @@ end
 function cmdHkhelp()
     sampAddChatMessage('_______________________________________', 0x33CCFF)
     sampAddChatMessage('*** HELPER KIT HELP *** - type a command for more infomation.', -1)
-    sampAddChatMessage('*** HELPER KIT ALL *** /def /loc /lvl /hrs /lvl1s', 0xCBCCCE)
+    sampAddChatMessage('*** HELPER KIT ALL *** /def /loc /lvl /n /hrs /lvl1s', 0xCBCCCE)
     sampAddChatMessage('*** HELPER KIT SENIORS *** /en /ahr', 0xCBCCCE)
 end
 
