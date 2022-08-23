@@ -127,7 +127,7 @@ end
 
 function cmdN(msg)
     if #msg == 0 then
-        sampAddChatMessage('USAGE: (/n)ewbie', 0xAFAFAF)
+        sampAddChatMessage('USAGE: (/n)ewbie [text]', 0xAFAFAF)
         return
     end
     sampSendChat('/newb ' .. msg)
