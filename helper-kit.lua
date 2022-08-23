@@ -125,29 +125,17 @@ function cmdLvl(level)
     ), -1)
 end
 
-function extendNewbie(chat, msg)
-    local _, id = sampGetPlayerIdByCharHandle(PLAYER_PED)
-    local prefix = '** ###### Helper ' .. sampGetPlayerNickname(id) .. ': '
-    sampSendChat('/newb ' .. msg:sub(1, 126 - #prefix), -1)
-    if #prefix + #msg > 127 then
-        sampSendChat(chat .. ' -..' .. msg:sub(127 - #prefix, #msg), -1)
-    end
-end
-
-function cmdN(msg)
-    if #msg == 0 then
-        sampAddChatMessage('USAGE: (/n)ewbie [text]', 0xAFAFAF)
-        return
-    end
-    extendNewbie('/g', msg)
-end
-
 function cmdEn(msg)
     if #msg == 0 then
         sampAddChatMessage('USAGE: (/e)xtendon(n)ewbie [text]', 0xAFAFAF)
         return
     end
-    extendNewbie('/newb', msg)
+    local _, id = sampGetPlayerIdByCharHandle(PLAYER_PED)
+    local prefix = '** ###### Helper ' .. sampGetPlayerNickname(id) .. ': '
+    sampSendChat('/newb ' .. msg:sub(1, 126 - #prefix), -1)
+    if #prefix + #msg > 127 then
+        sampSendChat('/newb' .. ' -..' .. msg:sub(127 - #prefix, #msg), -1)
+    end
 end
 
 function cmdHrs()
@@ -164,7 +152,7 @@ end
 
 function cmdLvl1s()
     local lvl1s = {}
-    for id=0, sampGetMaxPlayerId(false), 1 do
+    for id = 0, sampGetMaxPlayerId(false), 1 do
         if sampIsPlayerConnected(id) then
             if sampGetPlayerScore(id) == 1 then
                 if string.find(sampGetPlayerNickname(id), '_') then
