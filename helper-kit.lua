@@ -125,6 +125,14 @@ function cmdLvl(level)
     ), -1)
 end
 
+function cmdN(msg)
+    if #msg == 0 then
+        sampAddChatMessage('USAGE: (/n)ewbie', 0xAFAFAF)
+        return
+    end
+    sampSendChat('/newb ' .. msg)
+end
+
 function cmdEn(msg)
     if #msg == 0 then
         sampAddChatMessage('USAGE: (/e)xtendon(n)ewbie [text]', 0xAFAFAF)
@@ -207,6 +215,7 @@ function main()
     sampRegisterChatCommand('def', cmdDef)
     sampRegisterChatCommand('loc', cmdLoc)
     sampRegisterChatCommand('lvl', cmdLvl)
+    sampRegisterChatCommand('n', cmdN)
     sampRegisterChatCommand('hrs', cmdHrs)
     sampRegisterChatCommand('ahr', cmdAhr)
     sampRegisterChatCommand('hkhelp', cmdHkhelp)
