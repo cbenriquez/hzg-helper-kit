@@ -1172,7 +1172,7 @@
 		"keywords": ["9mm", "Pistol"],
 		"legal": "Yes",
 		"damage": "7 HP",
-		"from players": "$250 - $300",
+		"from players": "$250",
 		"from gun stores": "$500",
 		"from blackmarket (DD)": "$200",
 		"from blackmarket (SD)": "$200",
@@ -1182,7 +1182,7 @@
 		"keywords": ["Silenced Pistol", "SDPistol"],
 		"legal": "No",
 		"damage": "12 - 13 HP",
-		"from players": "$200 - $250",
+		"from players": "$200",
 		"from blackmarket (DD)": "$150",
 		"from blackmarket (SD)": "$150",
 		"as lvl 1 arms dealer": "150 materials"
@@ -1191,7 +1191,7 @@
 		"keywords": ["Desert Eagle", "Deagle"],
 		"legal": "No",
 		"damage": "46 HP",
-		"from players": "$3,000",
+		"from players": "$2,500",
 		"from blackmarket (DD)": "$1,000",
 		"as lvl 3 arms dealer": "2,500 materials"
 	},
@@ -1199,7 +1199,7 @@
 		"keywords": ["Shotgun", "Shotty"],
 		"legal": "Yes",
 		"damage": "26 - 44 HP",
-		"from players": "$600",
+		"from players": "$500",
 		"from gun stores": "$1,400",
 		"from blackmarket (DD)": "$400",
 		"from blackmarket (SD)": "$400",
@@ -1209,7 +1209,7 @@
 		"keywords": ["Combat Shotgun", "SPAS-12"],
 		"legal": "No",
 		"damage": "35 HP",
-		"from players": "$9,000 - $9,500",
+		"from players": "$8,500",
 		"from blackmarket (DD)": "$2,750",
 		"as lvl 5 arms dealer": "8,000 materials"
 	},
@@ -1217,7 +1217,7 @@
 		"keywords": ["TEC-9"],
 		"legal": "No",
 		"damage": "6 HP",
-		"from players": "$800 - $1,000",
+		"from players": "$1,150",
 		"from blackmarket (DD)": "$700",
 		"from blackmarket (SD)": "$900"
 	},
@@ -1225,7 +1225,7 @@
 		"keywords": ["Micro SMG", "UZI"],
 		"legal": "No",
 		"damage": "6 HP",
-		"from players": "$800 - $1,000",
+		"from players": "$1,150",
 		"from blackmarket (DD)": "$700",
 		"from blackmarket (SD)": "$900"
 	},
@@ -1242,7 +1242,7 @@
 		"keywords": ["Sniper Rifle"],
 		"legal": "No",
 		"damage": "41 - 55 HP",
-		"from players": "$12,000",
+		"from players": "$10,000",
 		"from blackmarket (DD)": "$3,250",
 		"as lvl 5 arms dealer": "9,500 materials"
 	},
@@ -1250,7 +1250,7 @@
 		"keywords": ["County Rifle"],
 		"legal": "Yes",
 		"damage": "24 HP",
-		"from players": "$1,700 - $1,900",
+		"from players": "$1,150",
 		"from gun stores": "$2,300",
 		"from blackmarket (DD)": "$850",
 		"from blackmarket (SD)": "$1,350",
@@ -1260,7 +1260,7 @@
 		"keywords": ["AK-47"],
 		"legal": "No",
 		"damage": "9 HP",
-		"from players": "$7,000",
+		"from players": "$5,500",
 		"from blackmarket (DD)": "$1,500",
 		"as lvl 4 arms dealer": "5,000 materials"
 	},
@@ -1268,7 +1268,7 @@
 		"keywords": ["M4"],
 		"legal": "No",
 		"damage": "9 HP",
-		"from players": "$8,000",
+		"from players": "$6,500",
 		"from blackmarket (DD)": "$1,750",
 		"as lvl 4 arms dealer": "6,000 materials"
 	},
@@ -1310,7 +1310,8 @@
 	{
 		"keywords": ["Dildo"],
 		"legal": "Yes",
-		"as lvl 5 arms dealer": "25 materials"
+		"as lvl 5 arms dealer": "25 materials",
+		"from sex store": "$11"
 	},
 	{
 		"keywords": ["Katana"],
@@ -1331,7 +1332,7 @@
 	},
 	{
 		"keywords": ["Tire"],
-		"description": "Allow you repair your vehicle tires and bodykit at the same time.",
+		"description": "Allow you /repair your vehicle tires and bodykit at the same time. Unlimited as DD.",
 		"as craftsman": "250 materials",
 		"usage":  "/repair as car mechanic"
 	},
@@ -1339,36 +1340,39 @@
 		"keywords": ["First aid kit", "Faid"],
 		"description": "Allows you to heal yourself overtime and also allows you to heal others whilst they are injured in the hurt state.",
 		"as craftsman": "500 materials",
-		"usage":  "/faid or /ti"
+		"heal amount": "+5 HP per 5 seconds",
+		"usage":  "/faid to use it, /firstaidoff to disable it, and /ti for wounded players."
 	},
 	{
 		"keywords": ["Receiver"],
-		"description": "Allows you to see the last few messages of the police department radio (/d). Bugged.",
+		"description": "Shows the next 3 /d messages. (DO NOT USE, BUGGED)",
 		"as craftsman": "5,000 materials"
 	},
 	{
 		"keywords": ["Camera"],
-		"as craftsman": "250 materials"
+		"as craftsman": "250 materials",
+		"usage": "Hold RMB to aim and click LMB to snap a photo."
 	},
 	{
 		"keywords": ["GPS"],
 		"description": "Displays the location above your radar on the bottom left corner.",
 		"as craftsman": "1,000 materials",
-		"usage":  "/gps"
+		"usage":  "/gps to toggle and /fbackup to call for assistance"
 	},
 	{
 		"keywords": ["Parachute"],
-		"as craftsman": "50 materials"
+		"as craftsman": "50 materials",
+		"usage": "Press LMB to deploy whilst in mid-air."
 	},
 	{
 		"keywords": ["Bugsweep"],
-		"description": "Clears you free of any bugs that FBI have planted on you",
+		"description": "Clears you free of any bugs that FBI have planted on you. Unlimited as DD.",
 		"as craftsman": "10,000 materials",
 		"usage":  "/sweep"
 	},
 	{
 		"keywords": ["Lockpick", "Picklock"],
-		"description": "Allows you to picklock houses, cars, cuffs and businesses.",
+		"description": "Allows you to /lockpick houses, cars, cuffs and businesses.",
 		"as craftsman": "250 materials",
 		"usage":  "/picklock"
 	},
@@ -1388,7 +1392,7 @@
 	},
 	{
 		"keywords": ["Diamond Donator", "DD"],
-		"from importers": "$1,000,000",
+		"from importers": "$975,000",
 		"from donating": "$19.50 USD",
 		"concurrent vehicles spawned": "4",
 		"personal vehicles limit": "20",
@@ -1427,18 +1431,23 @@
 	},
 	{
 		"keywords": ["Dynamic Door"],
-		"from players": "$800,000 - $1,000,000",
+		"from importers": "$975,000",
 		"from donating": "$19.50 USD"
 	},
 	{
 		"keywords": ["Crack"],
 		"from players": "$70 each",
-		"from crack lab": "$50 each"
+		"from crack lab": "$50 each",
+		"heal amount": "+10 AP",
+		"usage": "/usecrack with 2 grams of crack."
 	},
 	{
 		"keywords": ["Pot", "Marijuana", "Cannabis"],
 		"from players": "$30 each",
-		"from drug house": "$10 each"
+		"from drug house": "$10 each",
+		"legal limit": "46 grams",
+		"heal amount": "+20 HP",
+		"usage": "/usepot with 2 grams of pot"
 	},
 	{
 		"keywords": ["Speed Limit"],
@@ -1457,18 +1466,21 @@
 	{
 		"keywords": ["Class A Business"],
 		"from players": "$1,000,000 to $2,000,000+",
+		"from importers": "$2,475,000",
 		"from donating": "$49.50 USD",
 		"examples": "24/7, gas station with 24/7, gun store, clothes store, or advertisement store"
 	},
 	{
 		"keywords": ["Class B Business"],
 		"from players": "$800,000 to $1,500,000+",
+		"from importers": "$1,750,000",
 		"from donating": "$35 USD",
 		"examples": "Nightclub, Burger Shot, Cluckin' Bell, Pizza Stack, sex store, restaurant, or gym"
 	},
 	{
 		"keywords": ["House"],
 		"from players": "$500,000 - $1,500,000+",
+		"from importers": "$1,400,000",
 		"from donating": "$28.50 USD"
 	},
 	{
@@ -1492,13 +1504,13 @@
 	{
 		"keywords": ["MP3 Player"],
 		"usage": "/mp3",
-		"from importers": "$250,000",
+		"from importers": "$225,000",
 		"from donating": "$4.50"
 	},
 	{
 		"keywords": ["Boombox"],
 		"usage": "/placebb as DD or boombox owner",
-		"from importers": "$250,000",
+		"from importers": "$225,000",
 		"from donating": "$4.50"
 	},
 	{
@@ -1507,5 +1519,182 @@
 		"with MP2 - MF2": "$75 package cost, 250 mats per run, ETA 62 seconds, and 14.5k mats per hour",
 		"with shamal": "$135 package cost, 450 mats per run, ETA 95 seconds, and 16.65k mats per hour",
 		"with boat": "$150 package cost, 500 mats per run, ETA 214 seconds, and 8k mats per hour"
+	},
+	{
+		"keywords": ["Material"],
+		"from players": "$1.2 to $1.5",
+		"from /getmats": "$0.3"
+	},
+	{
+		"keywords": ["Full weapon set"],
+		"from blackmarket (DD)": "$8750",
+		"from players": "$26,000",
+		"as arms dealer": "26,650 materials"
+	},
+	{
+		"keywords": ["Double-ended dildo"],
+		"from sex store": "$20"
+	},
+	{
+		"keywords": ["Vibrator"],
+		"from sex store": "$15"
+	},
+	{
+		"keywords": ["Box of condoms"],
+		"from sex store": "$5"
+	},
+	{
+		"keywords": ["Clothes", "Skin"],
+		"from clothes store": "$250"
+	},
+	{
+		"keywords": ["Phone number"],
+		"from importers": "$100,000",
+		"from donating": "$2.00 USD",
+		"as donator": "/changeph"
+	},
+	{
+		"keywords": ["License plate"],
+		"from importers": "$100,000",
+		"from donating": "$2.00 USD",
+		"as donator": "/changeplates"
+	},
+	{
+		"keywords": ["Forum usertitle", "Usertitle"],
+		"from importers": "$225,000",
+		"from donating": "$4.50 USD"
+	},
+	{
+		"keywords": ["House interior change"],
+		"from importers": "$250,000",
+		"from donating": "$5.00 USD"
+	},
+	{
+		"keywords": ["Two boomboxes", "2 boomboxes"],
+		"from importers": "$350,000",
+		"from donating": "$7.00 USD"
+	},
+	{
+		"keywords": ["Vehicle"],
+		"from importers": "$250,000",
+		"from donating": "$5.00 USD"
+	},
+	{
+		"keywords": ["Two vehicles", "2x vehicles"],
+		"from importers": "$450,000",
+		"from donating": "$9.00 USD"
+	},
+	{
+		"keywords": ["House move and interior change"],
+		"from importers": "$475,000",
+		"from donating": "$9.50 USD"
+	},
+	{
+		"keywords": ["Business or dynamic door move"],
+		"from importers": "$475,000",
+		"from donating": "$9.50 USD"
+	},
+	{
+		"keywords": ["Three vehicles", "3x vehicles"],
+		"from importers": "$625,000",
+		"from donating": "$12.50 USD"
+	},
+	{
+		"keywords": ["Tier I Package", "Tier 1 Package"],
+		"from importers": "$1,975,000",
+		"from donating": "$39.50 USD"
+	},
+	{
+		"keywords": ["Custom house interior"],
+		"from importers": "$1,975,000",
+		"from donating": "$39.50 USD"
+	},
+	{
+		"keywords": ["Custom headquarters"],
+		"from importers": "$1,975,000",
+		"from donating": "$39.50 USD"
+	},
+	{
+		"keywords": ["Tier II Package", "Tier 2 Package"],
+		"from importers": "$2,475,000",
+		"from donating": "$49.50 USD"
+	},
+	{
+		"keywords": ["Private island"],
+		"from importers": "$2,975,000",
+		"from donating": "$59.50 USD"
+	},
+	{
+		"keywords": ["Tier III Package", "Tier 3 Package"],
+		"from importers": "$3,475,000",
+		"from donating": "$69.50 USD"
+	},
+	{
+		"keywords": ["Drug Crate"],
+		"from /getcrate": "$100",
+		"at drug factory": "/getcrate",
+		"description": "Re-stocks 10 grams per delivery."
+	},
+	{
+		"keywords": ["3x seeds", "Seeds"],
+		"from /getseeds": "$300 to $400",
+		"at drug house": "/getseeds",
+		"description": "Each seed makes 45 to 48 grams of pot."
+	},
+	{
+		"keywords": ["Family safe"],
+		"cost": "$5,000"
+	},
+	{
+		"keywords": ["House locker"],
+		"cost": "$5,000",
+		"description": "For house locker (max. 5). gunlocker2 for 2nd house."
+	},
+	{
+		"keywords": ["Reset upgrades"],
+		"cost": "$10,000",
+		"usage": "/resetupgrades",
+		"description": "Clears all the upgrades. Trunk weapons remain, but house weapons disappear."
+	},
+	{
+		"keywords": ["Vending machine"],
+		"cost": "Free, but requires $1.",
+		"usage": "Press F or ENTER at vending machine.",
+		"heal amount": "+35 HP"
+	},
+	{
+		"keywords": ["Sprunk"],
+		"from 24/7": "$1",
+		"usage": "/usesprunk. Click LMB to take a sip. Press F or ENTER to discard.",
+		"heal amount": "+1 HP per sip"
+	},
+	{
+		"keywords": ["Medic heal", "heal"],
+		"from /heal": "$20 to $100",
+		"heal amount": "100 HP"
+	},
+	{
+		"keywords": ["Hospital bills"],
+		"with insurance": "$150",
+		"without insurance": "$200",
+		"under 8 playing hours": "Free",
+		"heal amount": "50 HP and 100 HP as SD+"
+	},
+	{
+		"keywords": ["Kevlar vest", "vest"],
+		"from /guard": "$200",
+		"from gun stores": "$800",
+		"heal amount": "50 AP"
+	},
+	{
+		"keywords": ["Full health and armor"],
+		"from blackmarket (DD)": "$350",
+		"from blackmarket (SD)": "$500",
+		"as arms dealer": "26,650 materials"
+	},
+	{
+		"keywords": ["Contract"],
+		"Range": "$2,500 to $500,000",
+		"Range for LEOs": "$5,000 to $500,000"
 	}
 ]
