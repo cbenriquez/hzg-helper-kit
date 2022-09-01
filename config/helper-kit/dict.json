@@ -1373,7 +1373,7 @@
 	{
 		"keywords": ["Lockpick", "Picklock"],
 		"description": "Allows you to /lockpick houses, cars, cuffs and businesses.",
-		"as craftsman": "250 materials",
+		"as craftsman": "100 materials",
 		"usage":  "/picklock"
 	},
 	{
