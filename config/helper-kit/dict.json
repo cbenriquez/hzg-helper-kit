@@ -50,7 +50,7 @@
 	},
 	{
 		"keywords": ["Euros"],
-		"dealership": "Grotti - $32,000",
+		"from grotti": "$32,000",
 		"from players": "$20,000",
 		"seats": "2",
 		"speed": "137 MPH"
@@ -1457,7 +1457,7 @@
 		"interstate": "150 MPH"
 	},
 	{
-		"keywords": ["City Hall", "License", "Driver's License", "Boating License", "Pilot License"],
+		"keywords": ["City Hall", "Driver's License", "Boating License", "Pilot License"],
 		"driver's license": "$500",
 		"boating license": "$500",
 		"pilot license": "$2,500",
@@ -1554,7 +1554,7 @@
 		"as donator": "/changeph"
 	},
 	{
-		"keywords": ["License plate"],
+		"keywords": ["License plate", "Plate number"],
 		"from importers": "$100,000",
 		"from donating": "$2.00 USD",
 		"as donator": "/changeplates"
@@ -1620,7 +1620,7 @@
 		"from donating": "$49.50 USD"
 	},
 	{
-		"keywords": ["Private island"],
+		"keywords": ["Private island", "Island"],
 		"from importers": "$2,975,000",
 		"from donating": "$59.50 USD"
 	},
@@ -1659,7 +1659,7 @@
 		"description": "Clears all the upgrades. Trunk weapons remain, but house weapons disappear."
 	},
 	{
-		"keywords": ["Vending machine"],
+		"keywords": ["Vending machine", "Sprunk machine"],
 		"cost": "Free, but requires $1.",
 		"usage": "Press F or ENTER at vending machine.",
 		"heal amount": "+35 HP"

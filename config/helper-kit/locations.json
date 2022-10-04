@@ -402,6 +402,8 @@
    },
    {
       "keywords": [
+         "Death Knights MC",
+         "DK HQ",
          "Imps of Kashmir MC"
       ],
       "X": 2262.1194,
@@ -416,5 +418,14 @@
       "X": 1765.8531,
       "Y": -1364.8124,
       "Z": 15.7578
+   },
+   {
+      "keywords": [
+         "Auto Export Company",
+         "AEC"
+      ],
+      "X": 2729.7612,
+      "Y": -2451.5254,
+      "Z": 17.5937
    }
 ]
